@@ -1,4 +1,3 @@
-// app.js
 const API_URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
 
 async function fetchCryptoData() {
@@ -15,13 +14,13 @@ function displayHeatmap(coins) {
     const box = document.createElement("div");
     box.className = `crypto-box ${coin.price_change_percentage_24h >= 0 ? 'green' : 'red'}`;
     box.innerHTML = `
-      <strong>${coin.symbol.toUpperCase()}</strong><br/>
-      $${coin.current_price.toFixed(2)}<br/>
-      ${coin.price_change_percentage_24h.toFixed(2)}%
+      <div class="symbol">${coin.symbol.toUpperCase()}</div>
+      <div class="price">$${coin.current_price.toFixed(2)}</div>
+      <div class="change">${coin.price_change_percentage_24h.toFixed(2)}%</div>
     `;
     container.appendChild(box);
   });
 }
 
 fetchCryptoData();
-setInterval(fetchCryptoData, 60000); // Refresh every 60 seconds
+setInterval(fetchCryptoData, 60000);
